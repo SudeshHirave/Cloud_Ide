@@ -54,7 +54,7 @@ export const Coading = ()=>{
  
 
     useEffect(() => {
-      axios.post("http//localhost:3002/project",{replId})
+      axios.post("http//localhost:3002/start",{replId})
         .then(() => setpodcreated(true))
         .catch((err) => {console.log(err);})
     },[])

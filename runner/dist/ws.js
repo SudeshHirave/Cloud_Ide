@@ -18,16 +18,13 @@ const terminalManager = new pty_1.TerminalManager();
 function initWs(httpServer) {
     const io = new socket_io_1.Server(httpServer, {
         cors: {
-            // Should restrict this more!
             origin: "*",
             methods: ["GET", "POST"],
         },
     });
     io.on("connection", (socket) => __awaiter(this, void 0, void 0, function* () {
-        // Auth checks should happen here
         const host = socket.handshake.headers.host;
         console.log(`host is ${host}`);
-        // Split the host by '.' and take the first part as replId
         const replId = host === null || host === void 0 ? void 0 : host.split('.')[0];
         if (!replId) {
             socket.disconnect();
@@ -54,9 +51,6 @@ function initHandlers(socket, replId) {
         const data = yield (0, fs_1.fetchFileContent)(fullPath);
         callback(data);
     }));
-    // TODO: contents should be diff, not full file
-    // Should be validated for size
-    // Should be throttled before updating S3 (or use an S3 mount)
     socket.on("updateContent", (_a) => __awaiter(this, [_a], void 0, function* ({ path: filePath, content }) {
         const fullPath = `/workspace/${filePath}`;
         yield (0, fs_1.saveFile)(fullPath, content);
