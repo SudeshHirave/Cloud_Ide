@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { io, Socket } from "socket.io-client";
 import styled from '@emotion/styled';
 import { File, RemoteFile, Type } from "./external/editor/utils/file-manager";
+import { Editor } from "./Editor";
 
 function useSocket(replId :string){
     const [socket,setsocket] = useState<Socket | null>(null);
@@ -110,7 +111,7 @@ export const Postcodingpage = () => {
             </ButtonContainer>
             <Workspace>
                 <LeftPanel>
-                    <>ocoding </>
+                    <Editor socket={socket} onSelect={onSelect} files={filestructure} selectedfile={selectedFile}></Editor>
                 </LeftPanel>
                 <RightPanel>
                     <>terminal</>

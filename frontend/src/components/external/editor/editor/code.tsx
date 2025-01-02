@@ -1,7 +1,7 @@
 import Editor from "@monaco-editor/react";
 import { File } from "../utils/file-manager";
 import { Socket } from "socket.io-client";
-
+//@ts-ignore
 export const Code = ({ selectedFile, socket }: { selectedFile: File | undefined, socket: Socket | null }) => {
   if (!selectedFile)
     return null
@@ -31,7 +31,6 @@ export const Code = ({ selectedFile, socket }: { selectedFile: File | undefined,
         }, wait);
       };
     }
-
   return (
       <Editor
         height="100vh"
@@ -39,8 +38,6 @@ export const Code = ({ selectedFile, socket }: { selectedFile: File | undefined,
         value={code}
         theme="vs-dark"
         onChange={debounce((value) => {
-          // Should send diffs, for now sending the whole file
-          // PR and win a bounty!
           socket.emit("updateContent", { path: selectedFile.path, content: value });
         }, 500)}
       />
