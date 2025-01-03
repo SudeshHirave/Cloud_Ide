@@ -60,7 +60,7 @@ export const Coading = ()=>{
         .catch((err) => {console.log(err);})
     },[])
     if(!podcreated){
-        return (<>booting..</>)
+        return (<>booting......</>)
     }
     return (<Postcodingpage/>)
 }

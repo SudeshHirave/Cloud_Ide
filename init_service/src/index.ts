@@ -2,8 +2,7 @@ import express from "express";
 import dotenv from "dotenv"
 import cors from "cors";
 dotenv.config()
-import { copyS3Folder } from "./aws";
-
+import { copyS3fol } from "./aws2";
 const app = express();
 app.use(express.json());
 app.use(cors())
@@ -16,8 +15,19 @@ app.post("/project", async (req, res) => {
         return;
     }
 
-    await copyS3Folder(`base/${language}`, `code/${replId}`);
+//     await copyS3Folder(`base/${language}`,`repl/code/${replId}`);
+//     await copyS3Folders(process.env.S,`base/${language}`,`repl/code/${replId}`);
 
+//    // await copyS3Folder(`base/${language}`,`repl/code/${replId}`);
+//@ts-ignore
+await copyS3fol({
+    fromBucket: 'sudeshcloudide2',
+    fromLocation: `base/${language}`,
+    toBucket: 'sudeshcloudide2',
+    toLocation: `repl/code/${replId}`
+  });
+
+//@ts-ignore
     res.send("Project created");
 });
 

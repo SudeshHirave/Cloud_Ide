@@ -28,6 +28,10 @@ spec:
           env:
             - name: AWS_ACCESS_KEY_ID
               value: "your_aws_key_id"
+            - name: AWS_ACCESS_KEY_ID
+              value: "your_aws_key_id"
+            - name: AWS_ACCESS_KEY_ID
+              value: "your_aws_key_id"
             - name: AWS_SECRET_ACCESS_KEY
               value: "your_aws_secret"
           volumeMounts:
