@@ -39,7 +39,7 @@ spec:
               mountPath: /workspace
       containers:
       - name: runner
-        image: sudeshHirave/cloud_ide:latest
+        image: sudeshHirave/cloud-ide-runner:latest
         ports:
           - containerPort: 3001
           - containerPort: 3000
