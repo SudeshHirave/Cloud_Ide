@@ -30,6 +30,7 @@ const readandupdateyaml = (filepath:string,replId:string): Array<any> =>{
 app.post('/start',async (req: Request,res:Response) => {
     const replId = req.body;
     const namespace = "default";
+    console.log("request reached here at /start endpoint orchestrator")
 
     try{
         const kuberneresManifest = readandupdateyaml(path.join(__dirname,"../service.yaml"),replId);
@@ -48,13 +49,15 @@ app.post('/start',async (req: Request,res:Response) => {
                 console.log(`Unsupported kind: ${manifest.kind}`);
             }
         }
+        console.log("request reached here atend of means pod is created /start endpoint orchestrator")
+
     }catch(err){
         console.log('failed to create the resources');
         res.status(500).send({ message: "failed resources" });
     }
 });
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3003;
 
 app.listen(port,() => {
   console.log(`listening on ${port}`)

@@ -2,6 +2,9 @@
   margin: 0 auto;
   padding: 2rem;
 }
+body {
+  color: black;
+}
 
 .logo {
   height: 6em;

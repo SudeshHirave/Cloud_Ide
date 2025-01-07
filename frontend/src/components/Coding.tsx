@@ -52,14 +52,16 @@ export const Coading = ()=>{
     const [podcreated, setpodcreated] = useState(false);
     const [searchParams] = useSearchParams();
     const replId = searchParams.get('replId') ?? '';
- 
+  console.log(replId);
 
     useEffect(() => {
-      axios.post("http//localhost:3002/start",{replId})
+      console.log(replId + 'inside use effect')
+      axios.post("http://localhost:3003/start",{replId})
         .then(() => setpodcreated(true))
         .catch((err) => {console.log(err);})
     },[])
     if(!podcreated){
+      console.log(replId + 'inside booting')
         return (<>booting......</>)
     }
     return (<Postcodingpage/>)

@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 /* ... */
+
 body {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-
+  color: black;
+  
   background-color: #151515;
-  color: white;
   zoom: 1;
   margin: 0;
 }

@@ -26,14 +26,16 @@ spec:
               aws s3 cp s3://repl/code/service_name/ /workspace/ --recursive &&
               echo "copied from S3";
           env:
+            - name: S3_BUCKET
+              value: "sudeshcloudide2"
             - name: AWS_ACCESS_KEY_ID
-              value: "your_aws_key_id"
-            - name: AWS_ACCESS_KEY_ID
-              value: "your_aws_key_id"
-            - name: AWS_ACCESS_KEY_ID
-              value: "your_aws_key_id"
+              value: ""
             - name: AWS_SECRET_ACCESS_KEY
-              value: "your_aws_secret"
+              value: ""
+            - name: S3_ENDPOINT
+              value: ""
+            - name: AWS_REGION
+              value: ""
           volumeMounts:
             - name: workspace-volume
               mountPath: /workspace
